@@ -15,12 +15,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        ElevatedButton(
-          onPressed: () => context.go(Routes.todosScreen),
-          child: const Text('Go to the Todos screen'),
-        ),
-      ],),
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+          ElevatedButton(
+            onPressed: () => context.go(Routes.todosScreen),
+            child: const Text('Go to the Todos screen'),
+          ),
+        ],),
+      ),
     );
   }
 }

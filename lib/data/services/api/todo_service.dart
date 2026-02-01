@@ -15,10 +15,14 @@ class TodoService {
     try {
       var response = await _apiClient.get("/todos");
       if (response.code == 200) {
-        final json = jsonDecode(response.body);
-        return Result.ok(
-          json.map((element) => Todo.fromJson(element)).toList(),
-        );
+        final decoded = jsonDecode(response.body as String);
+
+
+        final todos = (decoded as List)
+            .map((e) => Todo.fromJson(e as Map<String, dynamic>))
+            .toList();
+
+        return Result.ok(todos);
       } else {
         return Result.error(HttpException("Invalid response"));
       }
