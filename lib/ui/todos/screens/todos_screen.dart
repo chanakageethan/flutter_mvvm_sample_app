@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_sample_app/ui/todos/view_models/todos_view_model.dart';
 
+import '../widgets/todo_list_item.dart';
+
 class TodosScreen extends StatefulWidget {
   const TodosScreen({super.key, required this.viewModel});
 
@@ -11,17 +13,17 @@ class TodosScreen extends StatefulWidget {
 }
 
 class _TodosScreenState extends State<TodosScreen> {
-
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _body());
+    return Scaffold(backgroundColor: Colors.white, body: _body());
   }
 
   Widget _body() => SingleChildScrollView(
     child: Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ListenableBuilder(
             listenable: widget.viewModel,
@@ -32,15 +34,12 @@ class _TodosScreenState extends State<TodosScreen> {
               if (widget.viewModel.load.error) {
                 return Center(child: Text("Error! Try again!"));
               }
-              // return Center(child: Text(widget.viewModel.todos[0].title.toString()));
               return ListView.builder(
                 shrinkWrap: true,
                 itemCount: widget.viewModel.todos.length,
 
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(widget.viewModel.todos[index].title.toString()),
-                  );
+                  return TodoListItem(todoItem: widget.viewModel.todos[index]);
                 },
               );
             },

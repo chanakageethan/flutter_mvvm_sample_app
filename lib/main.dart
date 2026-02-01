@@ -13,24 +13,14 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-
-
-
-
         Provider<ApiClient>(create: (_) => DioClient()),
-
-
         Provider<TodoRepository>(
           create: (context) => TodoRepositoryRemote(
             todoService: TodoService(context.read<ApiClient>()),
           ),
         ),
-
-
-
       ],
-      child:
-      MyApp(),
+      child: MyApp(),
     ),
   );
 }
