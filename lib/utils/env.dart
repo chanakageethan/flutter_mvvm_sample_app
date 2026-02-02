@@ -6,7 +6,7 @@ class Env {
   static String get apiBaseUrl {
     switch (envType) {
       case EnvType.dev:
-        return "https://jsonplaceholder.typicode.com";
+        return "https://fakestoreapi.com";
       case EnvType.prod:
         return "";
     }

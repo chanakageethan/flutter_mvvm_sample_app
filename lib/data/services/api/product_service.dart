@@ -1,25 +1,24 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter_mvvm_sample_app/data/services/api/models/todo.dart';
 import 'package:flutter_mvvm_sample_app/utils/result.dart';
 
 import 'api_client.dart';
+import 'models/product.dart';
 
-class TodoService {
+class ProductService {
   final ApiClient _apiClient;
 
-  TodoService(this._apiClient);
+  ProductService(this._apiClient);
 
-  Future<Result<List<Todo>>> getAllTodos() async {
+  Future<Result<List<Product>>> getAllProducts() async {
     try {
-      var response = await _apiClient.get("/todos");
+      var response = await _apiClient.get("/products");
       if (response.code == 200) {
         final decoded = jsonDecode(response.body as String);
 
-
         final todos = (decoded as List)
-            .map((e) => Todo.fromJson(e as Map<String, dynamic>))
+            .map((e) => Product.fromJson(e as Map<String, dynamic>))
             .toList();
 
         return Result.ok(todos);

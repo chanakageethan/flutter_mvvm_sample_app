@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm_sample_app/data/repositories/todo/todo_repository.dart';
-import 'package:flutter_mvvm_sample_app/data/repositories/todo/todo_repository_remote.dart';
 import 'package:flutter_mvvm_sample_app/data/services/api/api_client.dart';
-import 'package:flutter_mvvm_sample_app/data/services/api/todo_service.dart';
+import 'package:flutter_mvvm_sample_app/data/services/api/product_service.dart';
 import 'package:flutter_mvvm_sample_app/routing/router.dart';
 import 'package:flutter_mvvm_sample_app/ui/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'data/repositories/product/product_repository.dart';
+import 'data/repositories/product/product_repository_remote.dart';
 import 'data/services/api/dio_client.dart';
 
 void main() {
@@ -14,9 +14,9 @@ void main() {
     MultiProvider(
       providers: [
         Provider<ApiClient>(create: (_) => DioClient()),
-        Provider<TodoRepository>(
-          create: (context) => TodoRepositoryRemote(
-            todoService: TodoService(context.read<ApiClient>()),
+        Provider<ProductRepository>(
+          create: (context) => ProductRepositoryRemote(
+            productService: ProductService(context.read<ApiClient>()),
           ),
         ),
       ],

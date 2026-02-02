@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm_sample_app/ui/todos/view_models/todos_view_model.dart';
+import 'package:flutter_mvvm_sample_app/ui/product/view_models/product_view_model.dart';
 
 import '../widgets/todo_list_item.dart';
 
-class TodosScreen extends StatefulWidget {
-  const TodosScreen({super.key, required this.viewModel});
+class  ProductsScreen extends StatefulWidget {
+  const ProductsScreen({super.key, required this.viewModel});
 
-  final TodosViewModel viewModel;
+  final ProductViewModel viewModel;
 
   @override
-  State<TodosScreen> createState() => _TodosScreenState();
+  State<ProductsScreen> createState() => _ProductsScreenState();
 }
 
-class _TodosScreenState extends State<TodosScreen> {
+class _ProductsScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Colors.white, body: _body());
@@ -36,10 +36,12 @@ class _TodosScreenState extends State<TodosScreen> {
               }
               return ListView.builder(
                 shrinkWrap: true,
-                itemCount: widget.viewModel.todos.length,
+                itemCount: widget.viewModel.products.length,
 
                 itemBuilder: (context, index) {
-                  return TodoListItem(todoItem: widget.viewModel.todos[index]);
+                  return ProductListItem(
+                    productItem: widget.viewModel.products[index],
+                  );
                 },
               );
             },
