@@ -5,8 +5,8 @@ import 'package:flutter_mvvm_sample_app/utils/result.dart';
 import '../../../data/services/api/models/product.dart';
 import '../../../utils/command.dart';
 
-class ProductViewModel extends ChangeNotifier {
-  ProductViewModel({required ProductRepository productRepository})
+class HomeViewModel extends ChangeNotifier {
+  HomeViewModel({required ProductRepository productRepository})
     : _productRepository = productRepository {
     load = Command0(_loadTodos)..execute();
   }
