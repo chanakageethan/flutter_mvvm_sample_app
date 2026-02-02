@@ -8,7 +8,7 @@ import '../../../utils/command.dart';
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel({required ProductRepository productRepository})
     : _productRepository = productRepository {
-    load = Command0(_loadTodos)..execute();
+    load = Command0(_loadProducts)..execute();
   }
 
   final ProductRepository _productRepository;
@@ -18,7 +18,7 @@ class HomeViewModel extends ChangeNotifier {
 
   List<Product> get products => _products;
 
-  Future<Result<void>> _loadTodos() async {
+  Future<Result<void>> _loadProducts() async {
     final result = await _productRepository.getAllProducts();
 
     switch (result) {
