@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_sample_app/ui/home/view_models/home_view_model.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../routing/routes.dart';
-import 'widgets/list_item.dart';
+import '../../../routing/routes.dart';
+import '../widgets/list_item.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.viewModel});
@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: MediaQuery.of(context).size.height / 10),
           Text(
             "Discover Products",
             maxLines: 2,
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SizedBox(height: 16),
           ListenableBuilder(
-            listenable: widget.viewModel,
+            listenable: widget.viewModel.load,
             builder: (context, child) {
               if (widget.viewModel.load.running) {
                 return const Center(child: CircularProgressIndicator());
@@ -56,7 +57,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 itemBuilder: (_, int index) {
                   return InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.push(
+                        '${Routes.productDetailsScreen}/${widget.viewModel.products[index].id}',
+                      );
+                    },
                     child: ListItem(
                       productItem: widget.viewModel.products[index],
                     ),

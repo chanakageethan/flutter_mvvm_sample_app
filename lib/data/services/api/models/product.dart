@@ -24,7 +24,7 @@ class Product {
     category = json['category'];
     image = json['image'];
     rating =
-    json['rating'] != null ? new Rating.fromJson(json['rating']) : null;
+    json['rating'] != null ? Rating.fromJson(json['rating']) : null;
   }
 
   Map<String, dynamic> toJson() {

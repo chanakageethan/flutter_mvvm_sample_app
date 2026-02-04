@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_sample_app/data/services/api/api_client.dart';
 import 'package:flutter_mvvm_sample_app/data/services/api/product_service.dart';
 import 'package:flutter_mvvm_sample_app/routing/router.dart';
-import 'package:flutter_mvvm_sample_app/ui/home/home_screen.dart';
+import 'package:flutter_mvvm_sample_app/ui/home/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'data/repositories/product/product_repository.dart';

@@ -3,4 +3,5 @@ import 'package:flutter_mvvm_sample_app/utils/result.dart';
 
 abstract class ProductRepository {
   Future<Result<List<Product>>> getAllProducts();
+  Future<Result<Product>> getProduct(String productId);
 }

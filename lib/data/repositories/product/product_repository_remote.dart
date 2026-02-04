@@ -1,7 +1,5 @@
 import 'package:flutter_mvvm_sample_app/data/repositories/product/product_repository.dart';
-
 import 'package:flutter_mvvm_sample_app/utils/result.dart';
-
 import '../../services/api/models/product.dart';
 import '../../services/api/product_service.dart';
 
@@ -23,5 +21,11 @@ class ProductRepositoryRemote implements ProductRepository {
     } else {
       return Result.ok(_cachedData!);
     }
+  }
+
+  @override
+  Future<Result<Product>> getProduct(String productId) async {
+    final result = await _productService.getProduct(productId);
+    return result;
   }
 }

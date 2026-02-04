@@ -1,9 +1,10 @@
 import 'package:flutter_mvvm_sample_app/routing/routes.dart';
-import 'package:flutter_mvvm_sample_app/ui/home/home_screen.dart';
+import 'package:flutter_mvvm_sample_app/ui/home/screens/home_screen.dart';
+import 'package:flutter_mvvm_sample_app/ui/home/screens/product_details_screen.dart';
 import 'package:flutter_mvvm_sample_app/ui/home/view_models/home_view_model.dart';
+import 'package:flutter_mvvm_sample_app/ui/home/view_models/product_details_view_model.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-
 
 GoRouter router() => GoRouter(
   initialLocation: Routes.home,
@@ -18,5 +19,18 @@ GoRouter router() => GoRouter(
       },
     ),
 
+    GoRoute(
+      path: '${Routes.productDetailsScreen}/:productId',
+      builder: (context, state) {
+        final productId = state.pathParameters['productId']!;
+        return ProductDetailsScreen(
+          productId: productId,
+          viewModel: ProductDetailsViewModel(
+            productRepository: context.read(),
+            productId: productId,
+          ),
+        );
+      },
+    ),
   ],
 );
