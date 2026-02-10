@@ -1,6 +1,8 @@
 import 'package:flutter_mvvm_sample_app/routing/routes.dart';
+import 'package:flutter_mvvm_sample_app/ui/home/cart/cart_screen.dart';
 import 'package:flutter_mvvm_sample_app/ui/home/screens/home_screen.dart';
 import 'package:flutter_mvvm_sample_app/ui/home/screens/product_details_screen.dart';
+import 'package:flutter_mvvm_sample_app/ui/home/view_models/cart_view_model.dart';
 import 'package:flutter_mvvm_sample_app/ui/home/view_models/home_view_model.dart';
 import 'package:flutter_mvvm_sample_app/ui/home/view_models/product_details_view_model.dart';
 import 'package:go_router/go_router.dart';
@@ -29,6 +31,15 @@ GoRouter router() => GoRouter(
             productRepository: context.read(),
             productId: productId,
           ),
+        );
+      },
+    ),
+
+    GoRoute(
+      path: Routes.cartScreen,
+      builder: (context, state) {
+        return CartScreen(
+          viewModel: CartViewModel(cartRepository: context.read()),
         );
       },
     ),

@@ -29,6 +29,12 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          GestureDetector(
+            onTap: () {
+              context.go(Routes.cartScreen);
+            },
+            child: Text("Go to cart"),
+          ),
           SizedBox(height: MediaQuery.of(context).size.height / 10),
           Text(
             "Discover Products",
